@@ -16,10 +16,9 @@ Dummy video device (0x0001) (platform:v4l2loopback-001):
 HP HD Camera: HP HD Camera (usb-0000:00:14.0-9):
 	/dev/video0
 	/dev/video1
-
 ```
 
-We can clone the video from HD Camera (/dev/video0) to two virtual cameras (/dev/video40 and /dev/video41)
+We can clone the video from HD Camera (/dev/video0) to two virtual cameras (/dev/video40 and /dev/video41):
 
 ```
 $ make
