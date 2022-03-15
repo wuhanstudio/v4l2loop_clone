@@ -24,3 +24,8 @@ We can clone the video from HD Camera (/dev/video0) to two virtual cameras (/dev
 $ make
 $ ./v4l2loop_clone /dev/video0 /dev/video40 /dev/video41
 ```
+
+Related Projects:
+
+- https://bitbucket.org/OscarAcena/ocv-virtual-cam/
+- github.com/wuhanstudio/capturev4l2
