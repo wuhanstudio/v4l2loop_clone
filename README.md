@@ -28,4 +28,4 @@ $ ./v4l2loop_clone /dev/video0 /dev/video40 /dev/video41
 Related Projects:
 
 - https://bitbucket.org/OscarAcena/ocv-virtual-cam/
-- github.com/wuhanstudio/capturev4l2
+- https://github.com/wuhanstudio/capturev4l2
