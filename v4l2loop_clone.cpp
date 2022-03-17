@@ -12,6 +12,11 @@
 #define VID_HEIGHT 720
 #endif
 
+#include <fstream>
+
+int recording = 0;
+cv::VideoWriter writer;
+
 static void usage(const char *argv0)
 {
     fprintf(stderr, "Usage: %s input_device output_1 output_2 .... \n", argv0);
@@ -106,6 +111,47 @@ int main(int argc, char* argv[]) {
 
         // show frame
         // cv::imshow("input", frame);
+
+	std::fstream fin;
+	fin.open("capture");
+
+	if(fin.is_open()){
+	    imwrite("input.jpg", frame);
+	    fin.close();
+	    remove("capture");
+	}
+
+	std::fstream fstart;
+	fstart.open("start");
+
+	if(fstart.is_open()){
+		recording = 1;
+    		int codec = cv::VideoWriter::fourcc('M', 'P', '4', 'V');  
+    		double fps = 30.0;
+		std::string filename = "live.mp4";
+		cv::Size sizeFrame(640,480);
+    		writer.open(filename, codec, fps, sizeFrame, 1);
+		std::cout << "Started writing video... " << std::endl;
+	    	fstart.close();
+	    	remove("start");
+	}
+	if(recording) {
+		cv::Size sizeFrame(640,480);
+		cv::Mat xframe;
+		cv::resize(frame, xframe, sizeFrame);
+        	writer.write(xframe);
+    	}
+	
+	std::fstream fstop;
+	fstop.open("stop");
+
+	if(fstop.is_open()){
+		recording = 0;
+	    	fstop.close();
+	    	remove("stop");
+		std::cout << "Write complete !" << std::endl;
+    		writer.release();
+	}
 
 	std::vector<uchar> outbuffer;
         cv::imencode(".jpg", frame, outbuffer);
