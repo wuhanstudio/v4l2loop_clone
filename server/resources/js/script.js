@@ -26,14 +26,9 @@ socket.on('capture', (img) => {
 
 // Receive Encoded Video
 socket.on('encoded', (img) => {
-    // setTimeout(function () {
-    //     location.reload();
-    // }, 5000);
-    Snackbar.show({
-        text: 'Please restart the browser to see the video',
-        pos: 'bottom-right',
-        duration: 5000
-    });    
+    setTimeout(function () {
+        location.reload();
+    }, 3000);   
 });
 
 // Log message
