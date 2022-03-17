@@ -1,6 +1,6 @@
 # v4l2loop_clone
 
-This program clones the video stream from one v4l2 device to multiple v4l2loopback devices.
+This program clones the video stream from one v4l2 device to multiple v4l2loopback devices. (Virtual Camera)
 
 For example:
 
